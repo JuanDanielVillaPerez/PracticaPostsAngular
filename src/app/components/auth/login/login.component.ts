@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Userl } from 'src/app/models/userl';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb:FormBuilder) { 
     this.createForm();
   }
+
 
   ngOnInit(): void {
   }

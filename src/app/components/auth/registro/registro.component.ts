@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-registro',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegistroComponent implements OnInit {
   registerFrom:FormGroup;
   user:User;
-  constructor(private fb:FormBuilder, private authService:AuthService) { 
+  constructor(private fb:FormBuilder, private authService:AuthService, private cookie:CookieService) { 
     this.createFrom();
   }
 
@@ -27,6 +28,11 @@ export class RegistroComponent implements OnInit {
       this.setUser();
       this.authService.register(this.user).subscribe((data:any) =>{
         console.log('regsitro completado') 
+        this.cookie.set("User",this.user.username)
+        this.cookie.set("email",this.user.email)
+        this.cookie.set("password", this.user.password)
+
+        alert("el usuario "+this.cookie.get("User")+" ha sido registrado correctamente")
       }, error => {
         console.log('error')
       })

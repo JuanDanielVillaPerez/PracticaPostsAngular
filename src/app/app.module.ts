@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegistroComponent } from './components/auth/registro/registro.component';
 import { HomeComponent } from './components/main/home/home.component';
+import { PublicacionesComponent } from './components/auth/publicaciones/publicaciones.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistroComponent,
-    HomeComponent
+    HomeComponent,
+    PublicacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,9 @@ import { HomeComponent } from './components/main/home/home.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
